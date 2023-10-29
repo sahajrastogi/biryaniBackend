@@ -169,6 +169,23 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         var wolframSolution = res[i]["subpods"][j]["plaintext"]
         console.log(wolframSolution);
         resJSON["wolframSolution"] = wolframSolution;
+
+        var wolframLatexText= "$";
+        var wolframArray = wolframSolution.split("\n").join(" \n ").split(" ");
+        console.log(wolframArray);
+        for(var i = 0; i < wolframArray.length; i++){
+            var s = wolframArray[i];
+            if(isWord(s)){
+                wolframLatexText += "$ " + s + " $";
+            } else {
+                wolframLatexText += s + " ";
+            }
+        }
+        wolframLatexText += "$";
+        resJSON["wolframLatexText"] = wolframLatexText;
+        console.log(wolframLatexText);
+
+
         var prompt = "Find the step where I made a mistake with my solution or determine that my solution is correct: " + userSolution + " given that the correct solution is: " + wolframSolution;
         var promptResult = main(prompt);
         promptResult.then((res) => {
@@ -309,3 +326,12 @@ async function main2(messageJSON) {
     console.log(completion.choices[1]);
 }
 
+function isWord(input) {
+    if(input.length == 1 && input != "a"){
+        return false;
+    }
+    if(input == "\n") return false;
+  // Use a regular expression to test if the input contains only letters
+  const wordPattern = /^[A-Za-z]+$/;
+  return wordPattern.test(input);
+}
