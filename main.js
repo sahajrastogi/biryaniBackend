@@ -176,7 +176,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         for(var i = 0; i < wolframArray.length; i++){
             var s = wolframArray[i];
             if(isWord(s)){
-                wolframLatexText += "$ " + s + " $";
+                wolframLatexText += "$ " + s + " $ ";
             } else {
                 wolframLatexText += s + " ";
             }
