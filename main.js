@@ -171,7 +171,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         resJSON["wolframSolution"] = wolframSolution;
 
         var wolframLatexText= "";
-        var wolframArray = wolframSolution.split("\n").join(" \n ").split(" ");
+        var wolframArray = wolframSolution.split("\n").join(" ").split(" ");
         console.log(wolframArray);
         for(var i = 0; i < wolframArray.length; i++){
             var s = wolframArray[i];
