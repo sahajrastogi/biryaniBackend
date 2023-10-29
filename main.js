@@ -189,6 +189,9 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
                     errType = "calculation";
                 }
                 resJSON["errorType"] = errType;
+                result.setHeader("Access-Control-Allow-Origin", "*");
+                result.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+                result.setHeader("Access-Control-Allow-Headers", "Content-Type");
                 result.status(200).json(resJSON);
                 insertRecord(emailID,problemString,errType);
             })
