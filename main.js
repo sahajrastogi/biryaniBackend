@@ -168,6 +168,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         }
         var wolframSolution = res[i]["subpods"][j]["plaintext"]
         console.log(wolframSolution);
+        wolframSolution.replaceAll
         resJSON["wolframSolution"] = wolframSolution;
 
         var wolframLatexText= "";
@@ -240,7 +241,7 @@ async function getRecords(userEmail){
     for(var i = 0;i<results.length;i++){
         if(results[i]["errortype"].includes("conceptual")){
             conc++;
-        } else if(results[i]["errortype"].includes("computation")){
+        } else if(results[i]["errortype"].includes("calculation")){
             comp++;
         }
     }
