@@ -170,7 +170,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         console.log(wolframSolution);
         resJSON["wolframSolution"] = wolframSolution;
 
-        var wolframLatexText= "$";
+        var wolframLatexText= "";
         var wolframArray = wolframSolution.split("\n").join(" \n ").split(" ");
         console.log(wolframArray);
         for(var i = 0; i < wolframArray.length; i++){
@@ -181,7 +181,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
                 wolframLatexText += s + " ";
             }
         }
-        wolframLatexText += "$";
+        wolframLatexText += "";
         resJSON["wolframLatexText"] = wolframLatexText;
         console.log(wolframLatexText);
 
