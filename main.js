@@ -42,7 +42,7 @@ async function insertRecord(a,b,c){
 }
 client.connect().then(() =>{
     console.log("Connected to cockDB");
-    app.listen(3000, () => console.log('Server started'))
+    app.listen(8080, () => console.log('Server started'))
 });
 
 app.get('/userFeedback/:emailID/', async (req, res) => {
@@ -54,6 +54,7 @@ var url = "https://i.ibb.co/HP1F6rw/Note-Oct-28-2023.jpg";
 
 console.log(encodeURIComponent("https://i.ibb.co/SQKSyRq/Note-Oct-28-2023-2.jpg"));
 console.log(decodeURIComponent(encodeURIComponent("https://i.ibb.co/SQKSyRq/Note-Oct-28-2023-2.jpg")));
+
 app.post('/processRecord/:emailID/:url', async (request,result) => {
     var resJSON = {};
     const emailID = request.params["emailID"];
