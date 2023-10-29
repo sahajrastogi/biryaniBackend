@@ -167,7 +167,7 @@ app.post('/processRecord/:emailID/:url', async (request,result) => {
         var wolframSolution = res[i]["subpods"][j]["plaintext"]
         console.log(wolframSolution);
         resJSON["wolframSolution"] = wolframSolution;
-        var prompt = "Find the step where I made a mistake with my solution: " + userSolution + " given that the correct solution is: " + wolframSolution;
+        var prompt = "Find the step where I made a mistake with my solution or determine that my solution is correct: " + userSolution + " given that the correct solution is: " + wolframSolution;
         var promptResult = main(prompt);
         promptResult.then((res) => {
             console.log(res);
